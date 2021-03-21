@@ -1,0 +1,14 @@
+<div class="container green">
+<h1>Now, it is time to go grocery shopping!</h1>
+<p><%=@plan.name%></p>
+<ul>
+    <%@plan.food_plans.each do |f|%>
+        <li><%=link_to f.food.name, food_path(f.food.id)%></li>
+    <%end%>
+</ul>
+<div class="d-flex justify-content-end">
+    <%=form_with model:[@plan, @list], local:true do |f|%>
+        <%=f.submit "Let's go", class: "btn border-green text-white"%>
+    <%end%>
+</div>
+</div>

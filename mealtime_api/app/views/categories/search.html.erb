@@ -1,0 +1,14 @@
+<div class="green container mt-2">
+    <h3>Search Result</h3>
+    <hr>  
+    <%if @results.count != 0%>
+        <% @results.each do |result| %>  
+            <img src=<%=result.image_url%> width="150" height="150" class="rounded">
+            <h2><%=link_to result.name, food_path(result.id) %>  </h2>
+            <p><%=result.description%></p>
+            <hr>
+        <% end %>
+    <%else%>
+        <p>Couldn't find <%=@parameter%></p>
+    <%end%>
+</div>

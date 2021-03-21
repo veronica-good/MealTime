@@ -1,0 +1,49 @@
+<div class="container mb-20">    
+    <div class="nav">
+    <div class="green m-2">
+        <%= form_tag search_page_path, :method => "get",   
+            class: 'navbar-form navbar-left' do %>  
+                <div class="input-group">  
+                <%= search_field_tag :search, params[:search], placeholder: "Search by meal name", class: "form-control rounded green" %>  
+                <div class="input-group-btn mx-2">  
+                    <%= button_tag "Search", :class => 'btn border-green',:name => nil%>  
+                </div>  
+                </div>  
+        <% end %>
+    </div>
+    <div class="navbar-right green m-2">
+        <%#=image_tag("filter.svg", border: 0, width: "20px", heigth: "20px", class:"m-2")%>
+    </div>
+    </div>
+
+    <ul class="nav justify-content-center green">
+        <li class="nav-item">
+            <%=link_to "All Food", categories_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Breakfast", category_path(1), class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Lunch", category_path(2), class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Dinner", category_path(3), class:"nav-link"%>
+        </li>
+    </ul>
+    <div class='container green'>
+        <%@categories.each do |category|%>
+            <h1 class="text-center"><%=link_to category.name.capitalize!, category_path(category.id)%></h1>
+            <div class="row justify-content-center">
+            <%category.foods.each do |food|%>
+                <div class="card col-xs-11 col-sm-11 col-md-5 col-lg-3 col-xlg-3 m-4 border-green">
+
+                    <img src=<%=food.image_url%> class="card-img" alt=<%=food.name%>>
+                    <div class="card-img-overlay d-flex align-items-end py-0 my-0">
+                        <h4 class="card-title "><strong><%=link_to food.name, food_path(food.id)%></strong></h4>
+                    </div>
+                </div>
+            <%end%>
+            </div>
+        <%end%>
+    </div>
+</div>

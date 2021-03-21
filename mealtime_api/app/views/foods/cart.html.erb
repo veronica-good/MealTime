@@ -1,0 +1,38 @@
+<div class="container green">
+    <%if @carts.count !=0%>
+        <table class="container text-center">
+            <thead>
+                <tr>
+                    <th scope='col'></th>
+                    <th scope='col'>Meal</th>
+                    <th scope='col'>Serve</th>
+                    <th scope='col'>Modify</th>
+                    <th scope='col'></th>
+                </tr>
+            </thead>
+            <%@carts.each do |cart|%>
+                <tbody>
+                    <th scope='row'></th>
+                    <td class="m-2 p-2"><%=link_to cart.food.name, food_path(cart.food.id)%></td>
+                    <td class="m-2 p-2"><%=cart.quantity%> ppl</td>
+                    <%if cart.quantity=="two"%>
+                    <td class="m-2 p-2"><%=link_to "Add", shopping_cart_path(cart.id), method: :patch%></td>
+                    <%else%>
+                    <td class="m-2 p-2"><%=link_to "Reduce", shopping_cart_path(cart.id), method: :patch%></td>
+                    <%end%>
+                    <td><%=link_to "Delete", shopping_cart_path(cart.id), method: :delete%></td>
+                </tbody>  
+            <%end%>
+        </table>
+        <div class="shadow-sm p-3 mt-3 bg-white round d-flex justify-content-end">
+            <%=form_with model:@plan, class: "input-group mx-5", local: true do |f|%>
+                <%=f.text_field :name, required:true, placeholder: 'Name your plan', class:"form-control rounded green"%>
+
+                <%=f.submit "Create Plan", class: "btn border-green text-white mx-2"%>
+
+            <%end%>
+        </div>
+    <%else%>
+        <h2 class="text-center">Opps, your shopping bag is empty</h2>
+    <%end%>
+</div>

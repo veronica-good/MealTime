@@ -1,0 +1,54 @@
+<div class="nav">
+<div class="green m-2">
+    <%= form_tag search_page_path, :method => "get",   
+          class: 'navbar-form navbar-left' do %>  
+            <div class="input-group">  
+              <%= search_field_tag :search, params[:search], placeholder: "Search by meal name", class: "form-control rounded green" %>  
+              <div class="input-group-btn mx-2">  
+                <%= button_tag "Search", :class => 'btn border-green',:name => nil%>  
+              </div>  
+            </div>  
+      <% end %>
+</div>
+
+</div>
+<div class="container green">
+    <ul class="nav justify-content-center green">
+        <li class="nav-item">
+            <%=link_to "All Food", categories_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Breakfast", category_path(1), class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Lunch", category_path(2), class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Dinner", category_path(3), class:"nav-link"%>
+        </li>
+    </ul>
+    <div class="d-flex justify-content-center m-4">
+        <%=image_tag("fried-egg.svg", border: 0, width: "150px", heigth: "150px", class:"m-2")%>
+        <%=image_tag("lunch-box.svg", border: 0, width: "150px", heigth: "150px", class:"m-2")%>
+        <%=image_tag("food.svg", border: 0, width: "150px", heigth: "150px", class:"m-2")%>
+    </div>
+    <h1 class="text-center"><%=@category.name.capitalize!%></h1>
+    <%@foods.each do |f|%>         
+                <div class="card mb-3" style="max-width: 1080px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src=<%=f.image_url%> class="card-img" alt=<%=f.name%>>
+                        </div>                        
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= link_to f.name, food_path(f.id)%> </h5>
+                            <p class="card-text"><%=f.description%></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center m-4">
+                <%=image_tag("squares.svg", border: 0, width: "30px", heigth: "30px")%>   
+                </div>
+    <%end%>
+</div>

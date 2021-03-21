@@ -1,0 +1,78 @@
+<div class="green">
+    <div class=" d-flex justify-content-center border-light">
+            <h1><strong>Welcome to MealTime!</strong></h1>
+    </div>
+    <p class=" text-center">Simple way to plan your weekly meals!</p>
+
+<div class="owl-carousel m-10">
+  <% @foods.each do |food| %>
+  <div class="card-group">
+    <div class="card border-green"> 
+      <img src=<%=food.image_url%> height="250">
+    </div>
+  </div>
+  <% end %>
+</div>
+        <ul class="nav justify-content-center green">
+            <li class="nav-item">
+                <%=link_to "All Food", categories_path, class:"nav-link"%>
+            </li>
+            <li class="nav-item">
+                <%=link_to "Breakfast", category_path(1), class:"nav-link"%>
+            </li>
+            <li class="nav-item">
+                <%=link_to "Lunch", category_path(2), class:"nav-link"%>
+            </li>
+            <li class="nav-item">
+                <%=link_to "Dinner", category_path(3), class:"nav-link"%>
+            </li>
+        </ul>
+    <div class="container">
+    <p class=" text-center m-2">We’ve identified the simplest, most effective system for meal planning and broke it down into three key steps: selecting recipes, shopping for ingredients, and prepping your meals. These steps might seem pretty obvious, and for the most part they are, but there’s critical strategy within each of them. It’s the strategy that makes meal planning worth its weight in gold — or maybe just the money it saves you</p>
+    <div class="d-flex justify-content-center m-4">
+        <%=image_tag("olive-oil.png", border: 0, width: "150px", heigth: "150px")%>
+        <%=image_tag("soup.png", border: 0, width: "150px", heigth: "150px")%>
+        <%=image_tag("recipe-book.png", border: 0, width: "150px", heigth: "150px")%>
+    </div>
+
+    <h2 class=" text-center">Some meal preparation tips for beginners:</h2>
+        <ul class=" list-group list-group-flush">
+            <li class="list-group-item text-center">Select your meals</li>
+            <li class="list-group-item text-center">Shop for ingredients</li>
+            <li class="list-group-item text-center">Prepare those ingredients.</li>
+            <li class="list-group-item text-center">Kicking off the planning on Friday, shopping on Saturday morning (or night — less people in the stores), and then using an hour or so on Sunday for meal prep</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+<%# JavaScript to handle carousel %>
+<%= content_for(:after_js) do %>
+    <script>
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 50,
+                loop:true,
+                margin:10,
+                items:4,
+                autoplay:true,
+                autoplayTimeout:1500,
+                autoplayHoverPause:true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    600:{
+                        items:3
+                    },
+                    1000:{
+                        items:5
+                    }
+                }
+            });
+        });
+    </script>
+<% end %>

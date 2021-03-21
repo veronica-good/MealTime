@@ -1,0 +1,33 @@
+<div class="green card shadow p-3 my-5 mx-auto text-center" style="width: 40rem">
+    <h1>Sign Up</h1>
+    <%= form_with model: @user, local:true do |f|%>
+    <% if @user.errors.any? %>
+    <p>
+        <%= @user.errors.full_messages.join(', ')%>
+    </p>
+    <% end %>
+
+    <div class="input-group mb-3">
+        <%= f.label :first_name, class: "input-group-text border-green"  %> 
+        <%= f.text_field :f_name, class: "form-control green rounded"  %> 
+    </div>
+    <div class="input-group mb-3">
+        <%= f.label :last_name, class: "input-group-text border-green"  %> 
+        <%= f.text_field :l_name, class: "form-control green rounded"  %> 
+    </div>
+    <div class="input-group mb-3">
+        <%= f.label :email, class: "input-group-text border-green"  %> 
+        <%= f.email_field :email, class: "form-control green rounded"  %> 
+    </div>
+    <div class="input-group mb-3">
+        <%= f.label :password, class: "input-group-text border-green" %>
+        <%= f.password_field :password, class: "form-control green rounded" %>
+    </div>
+    <div class="input-group mb-3">
+        <%= f.label :password_confirmation, class: "input-group-text border-green" %>
+        <%= f.password_field :password_confirmation, class: "form-control green rounded" %>
+    </div>
+
+        <%= f.submit "Sign up", class: "btn border-green text-white mx-2"%>
+    <% end %>
+</div>

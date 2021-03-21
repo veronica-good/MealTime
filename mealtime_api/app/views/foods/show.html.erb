@@ -1,0 +1,61 @@
+<div class="container green">
+    <div class='card m-5 p-2 justify-content-center'>
+        <img class="rounded" src=<%=@food.image_url%> />
+        <h1> <%= @food.name %></h1>
+        <p><%= @food.description%> </p>
+
+        <small>
+        <%if @favourite.present?%>
+            <%=link_to favourite_path(@favourite),method: :delete do %>
+                <%image_tag("heart.svg", border: 0, width: "30px", heigth: "30px")%>
+            <%end%>
+        <%else%>
+            <%=link_to food_favourites_path(@food),method: :post do %>
+                <%image_tag("like.svg", border: 0, width: "30px", heigth: "30px")%>
+            <%end%>
+        <%end%>
+        </small>
+
+        <h2>Ingredients</h2>
+            <table class="table green">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Ingredient</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Measure</th>
+                    </tr>
+                </thead>
+                <%@food.recipes.each do |r|%>
+                    <tbody>
+                        <tr>
+                            <th scope="row"></th>
+                            <td><%=r.ingredients%></td>
+                            <td><%=r.two%></td>
+                            <td><%=r.measure%></td>
+                        </tr>
+                    </tbody>
+                <%end%>
+            </table>
+
+        <h2>Instructions</h2>
+            <ul class="list-group list-group-flush">
+                <%@food.preparations.each do |p|%>
+                    <li class="list-group-item"><%= p.step %></li>
+                <%end%>
+            </ul>
+
+        <div class="shadow-sm p-3 mt-3 bg-white round d-flex justify-content-end">
+            <%=form_with model:[@food,@shopping_cart], local: true do |f|%>
+            <div class="form-group">
+                <%=f.radio_button :quantity, "two"%>
+                <%=f.label :two_people%>
+                <%=f.radio_button :quantity, "four"%>
+                <%=f.label :four_people%>
+                <%=f.submit "Add to Cart", class: "btn border-green text-white"%>
+            </div>
+            <%end%>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,18 @@
+
+<div class="green container">
+<h1>Your Shopping List for this week:</h1>
+    <%@plan.food_plans.each do |fp|%>
+        <%fp.food.recipes.each do |r|%>        
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                <%if fp.quantity == "two"%>
+                        <%=r.ingredients%> - <%=r.two%> <%=r.measure%>
+                <%elsif%>
+                    <%=r.ingredients%> - <%=r.four%> <%=r.measure%>
+                <%end%>
+            </label>
+        </div>
+        <%end%>            
+    <%end%>
+</div>

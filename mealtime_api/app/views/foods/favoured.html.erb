@@ -1,0 +1,22 @@
+<div class="container green">
+    <h1 class="text-center">Your Favourites</h1>
+    <div class="d-flex justify-content-center m-4">
+        <%=image_tag("cutting-board.png", border: 0, width: "150px", heigth: "150px")%>
+    </div>
+<%if @foods.count == 0%>
+    <h2 class="text-center">Opps, no favoutites yet..</h2>
+<%else%>
+    <%@foods.each do |food|%>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <%fav=food.favourites.find_by(user: current_user)%>
+                <h2><%= link_to(fav.food.name, food_path(fav.food.id) )%></h2>
+                <p ><%= fav.food.description%></p>
+                <%=link_to favourite_path(fav.id),method: :delete do %>
+                    <%image_tag("heart.svg", border: 0, width: "30px", heigth: "30px")%>
+                <%end%>
+            </li>
+        </ul>
+    <%end%>
+</div>
+<%end%>

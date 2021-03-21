@@ -1,0 +1,36 @@
+<nav class='navbar navbar-light bg-light green'>
+    <div class='justify-content-start'>
+      <%=link_to root_path, class: 'navbar-brand m-2 p-0' do %>
+            <%image_tag("logo.png", border: 0, width: "150px", heigth: "150px")%>
+      <%end%>
+    </div>
+
+    <div class="justify-content-end">
+    <% if user_signed_in? %>
+        Hi, bon apetit! 
+        <%=link_to favoured_foods_path, class: 'nav-item m-2' do %>
+          <%image_tag("heart.svg", border: 0, width: "30px", heigth: "30px")%>
+        <%end%>
+
+        <%=link_to cart_foods_path, class: 'nav-item m-2' do %>
+          <%image_tag("grocery.svg", border: 0, width: "35px", heigth: "35px")%>
+        <%end%>
+         <%=link_to plans_path, class: 'nav-item m-2' do %>
+          <%image_tag("checklist.svg", border: 0, width: "35px", heigth: "35px")%>
+        <%end%>
+
+      <%=link_to session_path, class: 'nav-item m-2', 
+        method: :delete,
+        data: {confirm: 'Are you sure you want to log out?'} do %>
+          <%image_tag("log-out.svg", border: 0, width: "30px", heigth: "30px")%>
+        <%end%>       
+        <% else %>
+          <%=link_to new_session_path, class: 'nav-item m-2' do %>
+            <%image_tag("enter.svg", border: 0, width: "30px", heigth: "30px")%>
+          <%end%>
+          <%=link_to new_user_path, class: 'nav-item m-2' do %>
+            <%image_tag("add-user.svg", border: 0, width: "30px", heigth: "30px")%>
+          <%end%>
+        <% end %>
+    </div>
+</nav>

@@ -1,0 +1,14 @@
+<div class="green card shadow p-3 my-5 mx-auto text-center" style="width: 40rem">
+    <h1>Sign in</h1>
+     <%= form_with url: session_path, local: true do |f|  %>
+    <div class="input-group mb-3">
+        <%= f.label :email, class: "input-group-text border-green" %>
+        <%= f.email_field :email, class: "form-control green rounded"%>
+    </div>
+    <div class="input-group mb-3">
+        <%= f.label :password, class: "input-group-text border-green" %> 
+        <%= f.password_field :password, class: "form-control green rounded"  %> 
+    </div>
+        <%= f.submit "Sign In", class: "btn border-green text-white mx-2"  %> 
+    <% end %> 
+</div>
