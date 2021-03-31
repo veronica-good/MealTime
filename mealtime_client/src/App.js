@@ -4,7 +4,8 @@ import {
   BrowserRouter,
   Route,
   Switch
-} from 'react-router-dom'
+} from 'react-router-dom';
+import FoodShowPage from './components/FoodShowPage';
 
 class App extends Component {
   constructor(props) {
@@ -13,13 +14,12 @@ class App extends Component {
 
   render(){
     return(
-      <div className="App">
         <BrowserRouter>
           <Switch>
-            
+            <Route path='/foods/:id' component={FoodShowPage}/>
           </Switch>
         </BrowserRouter>
-      </div>
+
     )
   }
 }

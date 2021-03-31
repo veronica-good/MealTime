@@ -1,10 +1,11 @@
-import { Table, TableHeader } from 'semantic-ui-react';
+import React from 'react';
+import { Table, Container } from 'semantic-ui-react';
 
-const RecipeDetails = recipes =>{
+const RecipeDetails = ({recipes}) =>{
     return (
-        <div>
-            <Table color='#35b8be'>
-
+        <Container textAlign='center'>
+            <h2>Ingredients</h2>
+            <Table basic>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Ingredient</Table.HeaderCell>
@@ -14,17 +15,20 @@ const RecipeDetails = recipes =>{
                 </Table.Header>
 
                     <Table.Body>
-                    {recipes.map(recipe=>{
+                    {recipes ? recipes.map(recipe => {
+                        let {ingredients, two, four, measure}=recipe;
+                        return (
                         <Table.Row>
-                            <Table.Cell>{recipe.ingredients}</Table.Cell>
-                            <Table.Cell>{recipe.two}</Table.Cell>
-                            <Table.Cell>{recipe.measure}</Table.Cell>
+                            <Table.Cell>{ingredients}</Table.Cell>
+                            <Table.Cell>{two}</Table.Cell>
+                            <Table.Cell>{measure}</Table.Cell>
                         </Table.Row>
-                        })
+                        )
+                        }):''
                     }
                     </Table.Body>
             </Table>
-        </div>
+        </Container>
     )
 }
 

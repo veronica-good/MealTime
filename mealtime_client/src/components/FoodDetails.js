@@ -1,25 +1,38 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card'
+import { List, Container, Divider, Card, Image } from 'semantic-ui-react'
 import RecipeDetails from './RecipeDetails'
 
-const FoodDetails = ({
+export default function FoodDetails({
     id,
     name, 
     image_url, 
     description,
-    recipes}) => {
+    recipes,
+    preparations}){
         return(
             <>
-                <Card border="info">
-                    <Card.Image variant="top" src={image_url}/>
-                    <Card.Body>
-                        <Card.Title>{name}</Card.Title>
-                        <Card.Text>{description}</Card.Text>
-                    </Card.Body>
-                    <RecipeDetails recipes={recipes}/>                
+            <Container textAlign='center'>
+                <Card fluid color="teal">
+                    <Image src={image_url} wrapped ui={false}/>
+                    <Card.Content>
+                        <Card.Header>{name}</Card.Header>
+                        <Card.Description>{description}</Card.Description>
+                    </Card.Content>
+                    <RecipeDetails recipes={recipes}/> 
+                     <List>
+                        <h2>Cooking Steps</h2>
+                     {preparations ? preparations.map(prep=>{
+                         let {step}=prep;
+                         return(
+                        <Container>
+                            <List.Item>{step}</List.Item> 
+                            <Divider/>
+                        </Container>
+                            )
+                     }):""}              
+                     </List>
                 </Card>
+            </Container>
             </>
         )
-}
-
-export default FoodDetails;
+};
