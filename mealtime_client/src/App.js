@@ -6,6 +6,7 @@ import {
   Switch
 } from 'react-router-dom';
 import FoodShowPage from './components/FoodShowPage';
+import LandingPage from './components/LandingPage';
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends Component {
     return(
         <BrowserRouter>
           <Switch>
+            <Route exact path="/" component={LandingPage}/>
             <Route path='/foods/:id' component={FoodShowPage}/>
           </Switch>
         </BrowserRouter>
