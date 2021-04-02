@@ -1,10 +1,13 @@
 import React from 'react';
 import { Table, Container } from 'semantic-ui-react';
+import { Typography} from '@material-ui/core'
 
 const RecipeDetails = ({recipes}) =>{
     return (
         <Container textAlign='center'>
-            <h2>Ingredients</h2>
+            <Typography variant="h2" component="h2">
+                        Ingredients
+            </Typography>
             <Table basic>
                 <Table.Header>
                     <Table.Row>

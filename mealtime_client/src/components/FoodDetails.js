@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, Container, Divider, Card, Image } from 'semantic-ui-react'
-import RecipeDetails from './RecipeDetails'
+import RecipeDetails from './RecipeDetails';
+import { Typography} from '@material-ui/core'
 
 export default function FoodDetails({
     id,
@@ -20,7 +21,9 @@ export default function FoodDetails({
                     </Card.Content>
                     <RecipeDetails recipes={recipes}/> 
                      <List>
-                        <h2>Cooking Steps</h2>
+                     <Typography variant="h2" component="h2">
+                        Cooking Steps
+                    </Typography>
                      {preparations ? preparations.map(prep=>{
                          let {step}=prep;
                          return(
