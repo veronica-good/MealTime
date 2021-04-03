@@ -26,7 +26,7 @@ export default class LandingPage extends Component{
                             <Image src="/images/recipe-book.svg" size="small" centered/>
                         </Grid.Column>
                         <Grid.Column>
-                            <Image src="/images/soup.svg" size="small" centered/>
+                            <Image src="/images/soup.svg" size="small"/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

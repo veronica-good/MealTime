@@ -67,7 +67,7 @@ handleSignUp(){
   render(){
     return(
         <BrowserRouter>
-        
+        <Navbar/>
           <Switch>
             <Route exact path="/" component={LandingPage}/>
             <Route path='/foods/:id' component={FoodShowPage}/>
